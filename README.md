@@ -4,7 +4,7 @@ EX. NO: 3 AIM:
  
 
 IMPLEMENTATION OF HILL CIPHER
- 
+## AIM :
 ## To write a C program to implement the hill cipher substitution techniques.
 
 ## DESCRIPTION:
@@ -24,12 +24,61 @@ randomly from the set of invertible n × n matrices (modulo 26).
 
 ## ALGORITHM:
 
-STEP-1: Read the plain text and key from the user. STEP-2: Split the plain text into groups of length three. STEP-3: Arrange the keyword in a 3*3 matrix.
+STEP-1: Read the plain text and key from the user. 
+STEP-2: Split the plain text into groups of length three. 
+STEP-3: Arrange the keyword in a 3*3 matrix.
 STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
+```
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int key[3][3], plain[3], cipher[3];
+    char text[100];
+    int i, j;
+
+    printf("Enter the 3x3 key matrix :\n");
+    for(i = 0; i < 3; i++)
+        for(j = 0; j < 3; j++)
+            scanf("%d", &key[i][j]);
+
+    printf("Enter plaintext : ");
+    scanf("%s", text);
+
+
+    for(i = 0; i < 3; i++)
+        plain[i] = text[i] - 'A';
+
+   
+    for(i = 0; i < 3; i++)
+    {
+        cipher[i] = 0;
+        for(j = 0; j < 3; j++)
+            cipher[i] += key[i][j] * plain[j];
+
+        cipher[i] = cipher[i] % 26;
+    }
+
+    printf("Cipher Text: ");
+    for(i = 0; i < 3; i++)
+        printf("%c", cipher[i] + 'A');
+
+    printf("\n");
+
+    return 0;
+}
+```
 
 ## OUTPUT
+  
+<img width="438" height="223" alt="Screenshot 2026-10-28 115003" src="https://github.com/user-attachments/assets/6eab6180-f7be-4555-bebc-3cfefacd8958" />
 
 ## RESULT
+
+Thus the implementation of  Hill Cipher had been executed successfully.
+
+
